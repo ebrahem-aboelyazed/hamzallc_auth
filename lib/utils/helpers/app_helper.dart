@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hamzallc_auth/core/core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
@@ -10,7 +10,7 @@ class AppHelper {
 
   static Future<void> configureApp() async {
     WidgetsFlutterBinding.ensureInitialized();
-    await _loadEnv();
+    await Firebase.initializeApp();
     configureDependencies();
     await _initHive();
   }
@@ -19,13 +19,5 @@ class AppHelper {
     final hiveManager = getIt.get<HiveManager>();
     await Hive.initFlutter();
     await hiveManager.initializeCredentialsBox();
-  }
-
-  static Future<void> _loadEnv() async {
-    try {
-      await dotenv.load();
-    } catch (e) {
-      logger.e(e);
-    }
   }
 }

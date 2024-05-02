@@ -14,7 +14,9 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider<AuthCubit>(
           create: (BuildContext context) {
-            return AuthCubit();
+            return AuthCubit(
+              authService: getIt.get<AuthService>(),
+            );
           },
         ),
       ],

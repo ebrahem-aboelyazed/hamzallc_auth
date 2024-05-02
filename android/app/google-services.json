@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "527651344625",
+    "project_id": "hamza-llc-task",
+    "storage_bucket": "hamza-llc-task.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:527651344625:android:4e5efcf4bf54d1f583d950",
+        "android_client_info": {
+          "package_name": "com.example.hamzallc_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "527651344625-u0bdd7b6i0bktt835ooe0phspau9d751.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLcHeM3CQ51wrBsLQwdO93NwPtmX4GLHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "527651344625-u0bdd7b6i0bktt835ooe0phspau9d751.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
