@@ -15,6 +15,8 @@ class AuthCubit extends Cubit<AuthState> {
 
   final AuthService authService;
 
+  bool biometricAuthenticated = false;
+
   User? get currentUser => authService.currentUser;
 
   Stream<User?> get userStream => authService.userStream;
@@ -73,7 +75,22 @@ class AuthCubit extends Cubit<AuthState> {
     await authService.verifyEmail();
   }
 
+  Future<void> authenticateWithBiometrics() async {
+    if (biometricAuthenticated) return;
+    emit(const AuthState.loading());
+    final canAuthWithBiometrics =
+        await authService.canAuthenticateWithBiometrics();
+    if (!canAuthWithBiometrics) {
+      emit(const AuthState.loggedIn());
+      return;
+    }
+    final response = await authService.authenticateWithBiometrics();
+    biometricAuthenticated = response;
+    emit(const AuthState.loggedIn());
+  }
+
   Future<void> signOut() async {
+    biometricAuthenticated = false;
     emit(const AuthState.loading());
     await authService.signOut();
     emit(const AuthState.loggedOut());

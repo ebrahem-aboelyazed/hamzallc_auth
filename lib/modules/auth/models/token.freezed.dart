@@ -21,11 +21,9 @@ Token _$TokenFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Token {
   String get accessToken => throw _privateConstructorUsedError;
-
   String get refreshToken => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $TokenCopyWith<Token> get copyWith => throw _privateConstructorUsedError;
 }
@@ -34,7 +32,6 @@ mixin _$Token {
 abstract class $TokenCopyWith<$Res> {
   factory $TokenCopyWith(Token value, $Res Function(Token) then) =
       _$TokenCopyWithImpl<$Res, Token>;
-
   @useResult
   $Res call({String accessToken, String refreshToken});
 }
@@ -46,7 +43,6 @@ class _$TokenCopyWithImpl<$Res, $Val extends Token>
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -74,7 +70,6 @@ abstract class _$$TokenImplCopyWith<$Res> implements $TokenCopyWith<$Res> {
   factory _$$TokenImplCopyWith(
           _$TokenImpl value, $Res Function(_$TokenImpl) then) =
       __$$TokenImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({String accessToken, String refreshToken});
@@ -164,10 +159,8 @@ abstract class _Token implements Token {
 
   @override
   String get accessToken;
-
   @override
   String get refreshToken;
-
   @override
   @JsonKey(ignore: true)
   _$$TokenImplCopyWith<_$TokenImpl> get copyWith =>

@@ -8,10 +8,10 @@ import 'package:local_auth/local_auth.dart';
 
 @LazySingleton(as: AuthService)
 class AuthServiceImpl implements AuthService {
-  AuthServiceImpl(this._firebaseAuth, this._localAuthentication);
+  AuthServiceImpl(this._firebaseAuth, this._localAuth);
 
   final FirebaseAuth _firebaseAuth;
-  final LocalAuthentication _localAuthentication;
+  final LocalAuthentication _localAuth;
 
   @override
   Future<Either<Failure, User>> loginUser({
@@ -90,8 +90,12 @@ class AuthServiceImpl implements AuthService {
     try {
       final canAuthenticate = await canAuthenticateWithBiometrics();
       if (!canAuthenticate) return false;
-      final didAuthenticate = await _localAuthentication.authenticate(
+      final didAuthenticate = await _localAuth.authenticate(
         localizedReason: 'Please authenticate to login in your account',
+        options: const AuthenticationOptions(
+          stickyAuth: true,
+          biometricOnly: true,
+        ),
       );
       return didAuthenticate;
     } on PlatformException {
@@ -102,9 +106,9 @@ class AuthServiceImpl implements AuthService {
   @override
   Future<bool> canAuthenticateWithBiometrics() async {
     final canAuthenticateWithBiometrics =
-        await _localAuthentication.canCheckBiometrics;
+        await _localAuth.canCheckBiometrics;
     final canAuthenticate = canAuthenticateWithBiometrics ||
-        await _localAuthentication.isDeviceSupported();
+        await _localAuth.isDeviceSupported();
     return canAuthenticate;
   }
 
