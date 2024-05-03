@@ -22,7 +22,6 @@ class _HomeLockedViewState extends State<HomeLockedView> {
 
   @override
   Widget build(BuildContext context) {
-    print('Built HomeLockedView');
     return Scaffold(
       body: SafeArea(
         child: SizedBox(

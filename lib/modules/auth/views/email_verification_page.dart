@@ -7,6 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hamzallc_auth/modules/auth/auth.dart';
 import 'package:hamzallc_auth/routes/routes.dart';
 
+/// Widget for the email verification page.
 class EmailVerificationPage extends StatefulWidget {
   const EmailVerificationPage({super.key});
 
@@ -99,6 +100,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
     );
   }
 
+  /// Initializes variables and data of the widget.
   void initialize() {
     authCubit = context.read<AuthCubit>();
     userSubscription = authCubit.userStream.listen((event) {
@@ -112,6 +114,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
     startTimer();
   }
 
+  /// Starts the timer for resend email functionality.
   void startTimer() {
     _timer = Timer.periodic(
       const Duration(seconds: 1),
@@ -128,6 +131,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
     );
   }
 
+  /// Resends the verification email.
   Future<void> resendEmail() async {
     await authCubit.sendVerificationEmail();
     setState(() {

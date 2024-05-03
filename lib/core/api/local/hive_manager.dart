@@ -6,9 +6,15 @@ import 'package:hamzallc_auth/utils/utils.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:injectable/injectable.dart';
 
+/// Manages initialization and access to Hive boxes for storing data securely.
 @Singleton()
 class HiveManager {
   // Initializations Methods
+
+  /// Sets up a secure encryption key for encrypting sensitive data.
+  ///
+  /// Returns:
+  ///   A Future that resolves to a Uint8List containing the encryption key.
   Future<Uint8List> _setupSecureKey() async {
     const secureStorage = FlutterSecureStorage();
     final containsEncryptionKey =
@@ -24,6 +30,11 @@ class HiveManager {
     return base64Url.decode(value!);
   }
 
+  /// Initializes the credentials box for storing sensitive data.
+  ///
+  /// Returns:
+  ///   A Future that resolves to a Box<String>
+  ///   representing the credentials box.
   Future<Box<String>> initializeCredentialsBox() async {
     final encryptionKey = await _setupSecureKey();
     return Hive.openBox<String>(

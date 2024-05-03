@@ -8,6 +8,7 @@ import 'package:hamzallc_auth/modules/auth/auth.dart';
 part 'auth_cubit.freezed.dart';
 part 'auth_state.dart';
 
+/// Manages authentication state and operations.
 class AuthCubit extends Cubit<AuthState> {
   AuthCubit({
     required this.authService,
@@ -17,13 +18,27 @@ class AuthCubit extends Cubit<AuthState> {
 
   bool biometricAuthenticated = false;
 
+  /// Retrieves the current user.
   User? get currentUser => authService.currentUser;
 
+  /// Retrieves a stream of the current user.
   Stream<User?> get userStream => authService.userStream;
 
+  /// Global key for the login form.
   final GlobalKey<FormState> loginFormKey = GlobalKey();
+
+  /// Global key for the sign-up form.
   final GlobalKey<FormState> signUpFormKey = GlobalKey();
 
+  /// Logs in a user with email and password.
+  ///
+  /// Parameters:
+  ///   - [email] (String): The user's email.
+  ///   - [password] (String): The user's password.
+  ///
+  /// Emits:
+  ///   - AuthState.loading(): When login process starts.
+  ///   - AuthState.loggedIn(): When login is successful.
   Future<void> loginUser({
     required String email,
     required String password,
@@ -42,6 +57,16 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  /// Registers a new user with email, password, and name.
+  ///
+  /// Parameters:
+  ///   - [email] (String): The user's email.
+  ///   - [password] (String): The user's password.
+  ///   - [name] (String): The user's name.
+  ///
+  /// Emits:
+  ///   - AuthState.loading(): When registration process starts.
+  ///   - AuthState.registered(): When registration is successful.
   Future<void> registerUser({
     required String email,
     required String password,
@@ -62,6 +87,13 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  /// Signs in a user using Google authentication.
+  ///
+  /// Emits:
+  ///   - AuthState.socialSignLoading():
+  ///   When sign-in process with Google starts.
+  ///   - AuthState.loggedIn():
+  ///   When sign-in with Google is successful.
   Future<void> signWithGoogle() async {
     emit(const AuthState.socialSignLoading());
     final response = await authService.signWithGoogle();
@@ -71,10 +103,16 @@ class AuthCubit extends Cubit<AuthState> {
     );
   }
 
+  /// Sends a verification email to the user.
   Future<void> sendVerificationEmail() async {
     await authService.verifyEmail();
   }
 
+  /// Authenticates the user using biometrics.
+  ///
+  /// Emits:
+  ///   - AuthState.loading(): When biometric authentication process starts.
+  ///   - AuthState.loggedIn(): When biometric authentication is successful.
   Future<void> authenticateWithBiometrics() async {
     if (biometricAuthenticated) return;
     emit(const AuthState.loading());
@@ -89,16 +127,26 @@ class AuthCubit extends Cubit<AuthState> {
     emit(const AuthState.loggedIn());
   }
 
+  /// Signs out the current user.
+  ///
+  /// Emits:
+  ///   - AuthState.loading(): When sign-out process starts.
+  ///   - AuthState.loggedOut(): When sign-out is successful.
   Future<void> signOut() async {
     emit(const AuthState.loading());
     await authService.signOut();
     emit(const AuthState.loggedOut());
   }
 
+  /// Reloads user data.
   Future<void> reloadUser() async {
     await authService.reloadUser();
   }
 
+  /// Handles authentication failures.
+  ///
+  /// Parameters:
+  ///   - [failure] (Failure): The failure encountered during authentication.
   void onFailure(Failure failure) {
     emit(AuthFailure(failure));
   }
