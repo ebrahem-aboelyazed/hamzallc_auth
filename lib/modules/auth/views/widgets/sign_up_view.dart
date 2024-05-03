@@ -33,7 +33,6 @@ class _SignUpViewState extends State<SignUpView> {
             ),
             child: FadeInUp(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: Dimensions.paddingMax),
                   NameField(
@@ -49,13 +48,12 @@ class _SignUpViewState extends State<SignUpView> {
                   PasswordField(
                     onChanged: (value) => password = value,
                   ),
-                  const SizedBox(
-                    height: Dimensions.paddingExtraLarge,
-                  ),
-                  Align(
-                    child: BlocBuilder<AuthCubit, AuthState>(
-                      builder: (context, state) {
-                        return PrimaryButton(
+                  const SizedBox(height: Dimensions.paddingExtraLarge),
+                  BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      return IgnorePointer(
+                        ignoring: state is AuthSocialSignLoading,
+                        child: PrimaryButton(
                           onPressed: () async {
                             await cubit.registerUser(
                               email: email,
@@ -65,9 +63,23 @@ class _SignUpViewState extends State<SignUpView> {
                           },
                           loading: state is AuthLoading,
                           text: 'CREATE NEW ACCOUNT',
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: Dimensions.paddingMax),
+                  BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      return IgnorePointer(
+                        ignoring: state is AuthLoading,
+                        child: GoogleSignButton(
+                          onPressed: cubit.signWithGoogle,
+                          loading: state is AuthSocialSignLoading,
+                          text: 'SIGN UP WITH GOOGLE',
+                          loadingText: 'SIGNING UP WITH GOOGLE...',
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(height: Dimensions.paddingDefault),
                   Row(

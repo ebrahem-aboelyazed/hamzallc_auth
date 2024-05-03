@@ -8,6 +8,8 @@ class AuthState with _$AuthState {
 
   const factory AuthState.loading() = AuthLoading;
 
+  const factory AuthState.socialSignLoading() = AuthSocialSignLoading;
+
   const factory AuthState.registered() = AuthRegistered;
 
   const factory AuthState.loggedIn() = AuthLoggedIn;

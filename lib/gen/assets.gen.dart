@@ -29,6 +29,9 @@ class $AssetsSvgGen {
   SvgGenImage get icEmptyData =>
       const SvgGenImage('assets/svg/ic_empty_data.svg');
 
+  /// File path: assets/svg/ic_google.svg
+  SvgGenImage get icGoogle => const SvgGenImage('assets/svg/ic_google.svg');
+
   /// File path: assets/svg/ic_no_data.svg
   SvgGenImage get icNoData => const SvgGenImage('assets/svg/ic_no_data.svg');
 
@@ -37,7 +40,8 @@ class $AssetsSvgGen {
       const SvgGenImage('assets/svg/ic_search_empty.svg');
 
   /// List of all assets
-  List<SvgGenImage> get values => [icEmptyData, icNoData, icSearchEmpty];
+  List<SvgGenImage> get values =>
+      [icEmptyData, icGoogle, icNoData, icSearchEmpty];
 }
 
 class Assets {

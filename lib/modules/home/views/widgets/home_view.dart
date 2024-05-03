@@ -8,6 +8,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Built HomeView');
     final authCubit = context.read<AuthCubit>();
     return Scaffold(
       appBar: AppBar(

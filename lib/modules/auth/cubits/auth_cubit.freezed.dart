@@ -21,6 +21,7 @@ mixin _$AuthState {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -33,6 +34,7 @@ mixin _$AuthState {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -45,6 +47,7 @@ mixin _$AuthState {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -58,6 +61,7 @@ mixin _$AuthState {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -70,6 +74,7 @@ mixin _$AuthState {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -82,6 +87,7 @@ mixin _$AuthState {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -150,6 +156,7 @@ class _$AuthInitialImpl implements AuthInitial {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -165,6 +172,7 @@ class _$AuthInitialImpl implements AuthInitial {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -180,6 +188,7 @@ class _$AuthInitialImpl implements AuthInitial {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -199,6 +208,7 @@ class _$AuthInitialImpl implements AuthInitial {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -214,6 +224,7 @@ class _$AuthInitialImpl implements AuthInitial {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -229,6 +240,7 @@ class _$AuthInitialImpl implements AuthInitial {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -288,6 +300,7 @@ class _$AuthUnauthorizedImpl implements AuthUnauthorized {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -303,6 +316,7 @@ class _$AuthUnauthorizedImpl implements AuthUnauthorized {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -318,6 +332,7 @@ class _$AuthUnauthorizedImpl implements AuthUnauthorized {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -337,6 +352,7 @@ class _$AuthUnauthorizedImpl implements AuthUnauthorized {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -352,6 +368,7 @@ class _$AuthUnauthorizedImpl implements AuthUnauthorized {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -367,6 +384,7 @@ class _$AuthUnauthorizedImpl implements AuthUnauthorized {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -426,6 +444,7 @@ class _$AuthLoadingImpl implements AuthLoading {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -441,6 +460,7 @@ class _$AuthLoadingImpl implements AuthLoading {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -456,6 +476,7 @@ class _$AuthLoadingImpl implements AuthLoading {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -475,6 +496,7 @@ class _$AuthLoadingImpl implements AuthLoading {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -490,6 +512,7 @@ class _$AuthLoadingImpl implements AuthLoading {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -505,6 +528,7 @@ class _$AuthLoadingImpl implements AuthLoading {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -521,6 +545,152 @@ class _$AuthLoadingImpl implements AuthLoading {
 
 abstract class AuthLoading implements AuthState {
   const factory AuthLoading() = _$AuthLoadingImpl;
+}
+
+/// @nodoc
+abstract class _$$AuthSocialSignLoadingImplCopyWith<$Res> {
+  factory _$$AuthSocialSignLoadingImplCopyWith(
+          _$AuthSocialSignLoadingImpl value,
+          $Res Function(_$AuthSocialSignLoadingImpl) then) =
+      __$$AuthSocialSignLoadingImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$AuthSocialSignLoadingImplCopyWithImpl<$Res>
+    extends _$AuthStateCopyWithImpl<$Res, _$AuthSocialSignLoadingImpl>
+    implements _$$AuthSocialSignLoadingImplCopyWith<$Res> {
+  __$$AuthSocialSignLoadingImplCopyWithImpl(_$AuthSocialSignLoadingImpl _value,
+      $Res Function(_$AuthSocialSignLoadingImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$AuthSocialSignLoadingImpl implements AuthSocialSignLoading {
+  const _$AuthSocialSignLoadingImpl();
+
+  @override
+  String toString() {
+    return 'AuthState.socialSignLoading()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthSocialSignLoadingImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() unauthorized,
+    required TResult Function() loading,
+    required TResult Function() socialSignLoading,
+    required TResult Function() registered,
+    required TResult Function() loggedIn,
+    required TResult Function() loggedOut,
+    required TResult Function() updated,
+    required TResult Function(Failure failure) failure,
+  }) {
+    return socialSignLoading();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? unauthorized,
+    TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
+    TResult? Function()? registered,
+    TResult? Function()? loggedIn,
+    TResult? Function()? loggedOut,
+    TResult? Function()? updated,
+    TResult? Function(Failure failure)? failure,
+  }) {
+    return socialSignLoading?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? unauthorized,
+    TResult Function()? loading,
+    TResult Function()? socialSignLoading,
+    TResult Function()? registered,
+    TResult Function()? loggedIn,
+    TResult Function()? loggedOut,
+    TResult Function()? updated,
+    TResult Function(Failure failure)? failure,
+    required TResult orElse(),
+  }) {
+    if (socialSignLoading != null) {
+      return socialSignLoading();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthInitial value) initial,
+    required TResult Function(AuthUnauthorized value) unauthorized,
+    required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
+    required TResult Function(AuthRegistered value) registered,
+    required TResult Function(AuthLoggedIn value) loggedIn,
+    required TResult Function(AuthLoggedOut value) loggedOut,
+    required TResult Function(AuthUpdated value) updated,
+    required TResult Function(AuthFailure value) failure,
+  }) {
+    return socialSignLoading(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AuthInitial value)? initial,
+    TResult? Function(AuthUnauthorized value)? unauthorized,
+    TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
+    TResult? Function(AuthRegistered value)? registered,
+    TResult? Function(AuthLoggedIn value)? loggedIn,
+    TResult? Function(AuthLoggedOut value)? loggedOut,
+    TResult? Function(AuthUpdated value)? updated,
+    TResult? Function(AuthFailure value)? failure,
+  }) {
+    return socialSignLoading?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthInitial value)? initial,
+    TResult Function(AuthUnauthorized value)? unauthorized,
+    TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
+    TResult Function(AuthRegistered value)? registered,
+    TResult Function(AuthLoggedIn value)? loggedIn,
+    TResult Function(AuthLoggedOut value)? loggedOut,
+    TResult Function(AuthUpdated value)? updated,
+    TResult Function(AuthFailure value)? failure,
+    required TResult orElse(),
+  }) {
+    if (socialSignLoading != null) {
+      return socialSignLoading(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthSocialSignLoading implements AuthState {
+  const factory AuthSocialSignLoading() = _$AuthSocialSignLoadingImpl;
 }
 
 /// @nodoc
@@ -564,6 +734,7 @@ class _$AuthRegisteredImpl implements AuthRegistered {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -579,6 +750,7 @@ class _$AuthRegisteredImpl implements AuthRegistered {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -594,6 +766,7 @@ class _$AuthRegisteredImpl implements AuthRegistered {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -613,6 +786,7 @@ class _$AuthRegisteredImpl implements AuthRegistered {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -628,6 +802,7 @@ class _$AuthRegisteredImpl implements AuthRegistered {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -643,6 +818,7 @@ class _$AuthRegisteredImpl implements AuthRegistered {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -702,6 +878,7 @@ class _$AuthLoggedInImpl implements AuthLoggedIn {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -717,6 +894,7 @@ class _$AuthLoggedInImpl implements AuthLoggedIn {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -732,6 +910,7 @@ class _$AuthLoggedInImpl implements AuthLoggedIn {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -751,6 +930,7 @@ class _$AuthLoggedInImpl implements AuthLoggedIn {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -766,6 +946,7 @@ class _$AuthLoggedInImpl implements AuthLoggedIn {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -781,6 +962,7 @@ class _$AuthLoggedInImpl implements AuthLoggedIn {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -840,6 +1022,7 @@ class _$AuthLoggedOutImpl implements AuthLoggedOut {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -855,6 +1038,7 @@ class _$AuthLoggedOutImpl implements AuthLoggedOut {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -870,6 +1054,7 @@ class _$AuthLoggedOutImpl implements AuthLoggedOut {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -889,6 +1074,7 @@ class _$AuthLoggedOutImpl implements AuthLoggedOut {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -904,6 +1090,7 @@ class _$AuthLoggedOutImpl implements AuthLoggedOut {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -919,6 +1106,7 @@ class _$AuthLoggedOutImpl implements AuthLoggedOut {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -978,6 +1166,7 @@ class _$AuthUpdatedImpl implements AuthUpdated {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -993,6 +1182,7 @@ class _$AuthUpdatedImpl implements AuthUpdated {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -1008,6 +1198,7 @@ class _$AuthUpdatedImpl implements AuthUpdated {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -1027,6 +1218,7 @@ class _$AuthUpdatedImpl implements AuthUpdated {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -1042,6 +1234,7 @@ class _$AuthUpdatedImpl implements AuthUpdated {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -1057,6 +1250,7 @@ class _$AuthUpdatedImpl implements AuthUpdated {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,
@@ -1142,6 +1336,7 @@ class _$AuthFailureImpl implements AuthFailure {
     required TResult Function() initial,
     required TResult Function() unauthorized,
     required TResult Function() loading,
+    required TResult Function() socialSignLoading,
     required TResult Function() registered,
     required TResult Function() loggedIn,
     required TResult Function() loggedOut,
@@ -1157,6 +1352,7 @@ class _$AuthFailureImpl implements AuthFailure {
     TResult? Function()? initial,
     TResult? Function()? unauthorized,
     TResult? Function()? loading,
+    TResult? Function()? socialSignLoading,
     TResult? Function()? registered,
     TResult? Function()? loggedIn,
     TResult? Function()? loggedOut,
@@ -1172,6 +1368,7 @@ class _$AuthFailureImpl implements AuthFailure {
     TResult Function()? initial,
     TResult Function()? unauthorized,
     TResult Function()? loading,
+    TResult Function()? socialSignLoading,
     TResult Function()? registered,
     TResult Function()? loggedIn,
     TResult Function()? loggedOut,
@@ -1191,6 +1388,7 @@ class _$AuthFailureImpl implements AuthFailure {
     required TResult Function(AuthInitial value) initial,
     required TResult Function(AuthUnauthorized value) unauthorized,
     required TResult Function(AuthLoading value) loading,
+    required TResult Function(AuthSocialSignLoading value) socialSignLoading,
     required TResult Function(AuthRegistered value) registered,
     required TResult Function(AuthLoggedIn value) loggedIn,
     required TResult Function(AuthLoggedOut value) loggedOut,
@@ -1206,6 +1404,7 @@ class _$AuthFailureImpl implements AuthFailure {
     TResult? Function(AuthInitial value)? initial,
     TResult? Function(AuthUnauthorized value)? unauthorized,
     TResult? Function(AuthLoading value)? loading,
+    TResult? Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult? Function(AuthRegistered value)? registered,
     TResult? Function(AuthLoggedIn value)? loggedIn,
     TResult? Function(AuthLoggedOut value)? loggedOut,
@@ -1221,6 +1420,7 @@ class _$AuthFailureImpl implements AuthFailure {
     TResult Function(AuthInitial value)? initial,
     TResult Function(AuthUnauthorized value)? unauthorized,
     TResult Function(AuthLoading value)? loading,
+    TResult Function(AuthSocialSignLoading value)? socialSignLoading,
     TResult Function(AuthRegistered value)? registered,
     TResult Function(AuthLoggedIn value)? loggedIn,
     TResult Function(AuthLoggedOut value)? loggedOut,

@@ -5,12 +5,30 @@ import 'package:hamzallc_auth/modules/auth/auth.dart';
 import 'package:hamzallc_auth/modules/home/home.dart';
 import 'package:hamzallc_auth/routes/routes.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  late final AuthCubit _authCubit;
+
+  @override
+  void initState() {
+    _authCubit = context.read<AuthCubit>();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _authCubit.biometricAuthenticated = false;
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final authCubit = context.read<AuthCubit>();
     return BlocConsumer<AuthCubit, AuthState>(
       listener: (context, state) {
         state.whenOrNull(
@@ -18,7 +36,7 @@ class HomePage extends StatelessWidget {
         );
       },
       builder: (context, state) {
-        final authenticated = authCubit.biometricAuthenticated;
+        final authenticated = _authCubit.biometricAuthenticated;
         return authenticated ? const HomeView() : const HomeLockedView();
       },
     );

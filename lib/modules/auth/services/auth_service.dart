@@ -8,7 +8,7 @@ abstract class AuthService {
     required String password,
   });
 
-  Future<Either<Failure, UserCredential>> registerUser({
+  Future<Either<Failure, User>> registerUser({
     required String email,
     required String password,
     required String name,
@@ -16,7 +16,7 @@ abstract class AuthService {
 
   Future<Either<Failure, void>> verifyEmail();
 
-  Future<Either<Failure, void>> signInWithGoogle();
+  Future<Either<Failure, User>> signWithGoogle();
 
   bool hasVerifiedEmail();
 

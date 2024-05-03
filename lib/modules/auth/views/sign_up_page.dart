@@ -17,11 +17,13 @@ class SignUpPage extends StatelessWidget {
           key: context.read<AuthCubit>().signUpFormKey,
           child: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
-              if (state is AuthFailure) {
-                context.showErrorSnackBar(state.failure);
-              } else if (state is AuthRegistered) {
-                context.go(Routes.home);
-              }
+              state.whenOrNull(
+                failure: (failure) {
+                  context.showErrorSnackBar(failure);
+                },
+                registered: () => context.go(Routes.home),
+                loggedIn: () => context.go(Routes.home),
+              );
             },
             child: const SignUpView(),
           ),

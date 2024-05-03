@@ -1,6 +1,7 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/services.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:hamzallc_auth/core/exceptions/failure.dart';
 import 'package:hamzallc_auth/modules/auth/auth.dart';
 import 'package:injectable/injectable.dart';
@@ -8,10 +9,11 @@ import 'package:local_auth/local_auth.dart';
 
 @LazySingleton(as: AuthService)
 class AuthServiceImpl implements AuthService {
-  AuthServiceImpl(this._firebaseAuth, this._localAuth);
+  AuthServiceImpl(this._firebaseAuth, this._localAuth, this._googleSignIn);
 
   final FirebaseAuth _firebaseAuth;
   final LocalAuthentication _localAuth;
+  final GoogleSignIn _googleSignIn;
 
   @override
   Future<Either<Failure, User>> loginUser({
@@ -36,7 +38,7 @@ class AuthServiceImpl implements AuthService {
   }
 
   @override
-  Future<Either<Failure, UserCredential>> registerUser({
+  Future<Either<Failure, User>> registerUser({
     required String email,
     required String password,
     required String name,
@@ -48,9 +50,8 @@ class AuthServiceImpl implements AuthService {
       );
       final user = credentials.user;
       if (user == null) return const Left(Failure());
-
       await user.updateDisplayName(name);
-      return Right(credentials);
+      return await loginUser(email: email, password: password);
     } catch (e) {
       final message = e.toString();
       return Left(Failure(message: message));
@@ -74,9 +75,18 @@ class AuthServiceImpl implements AuthService {
   }
 
   @override
-  Future<Either<Failure, void>> signInWithGoogle() {
-    // TODO: implement signInWithGoogle
-    throw UnimplementedError();
+  Future<Either<Failure, User>> signWithGoogle() async {
+    final googleUser = await _googleSignIn.signIn();
+    final googleAuth = await googleUser?.authentication;
+    if (googleAuth == null) return const Left(Failure());
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth.accessToken,
+      idToken: googleAuth.idToken,
+    );
+    final data = await _firebaseAuth.signInWithCredential(credential);
+    final user = data.user;
+    if (user == null) return const Left(Failure());
+    return Right(user);
   }
 
   @override
@@ -91,7 +101,7 @@ class AuthServiceImpl implements AuthService {
       final canAuthenticate = await canAuthenticateWithBiometrics();
       if (!canAuthenticate) return false;
       final didAuthenticate = await _localAuth.authenticate(
-        localizedReason: 'Please authenticate to login in your account',
+        localizedReason: 'Please authenticate to access your account',
         options: const AuthenticationOptions(
           stickyAuth: true,
           biometricOnly: true,
@@ -105,15 +115,15 @@ class AuthServiceImpl implements AuthService {
 
   @override
   Future<bool> canAuthenticateWithBiometrics() async {
-    final canAuthenticateWithBiometrics =
-        await _localAuth.canCheckBiometrics;
-    final canAuthenticate = canAuthenticateWithBiometrics ||
-        await _localAuth.isDeviceSupported();
+    final canAuthenticateWithBiometrics = await _localAuth.canCheckBiometrics;
+    final canAuthenticate =
+        canAuthenticateWithBiometrics || await _localAuth.isDeviceSupported();
     return canAuthenticate;
   }
 
   @override
   Future<void> signOut() async {
+    await _googleSignIn.signOut();
     await _firebaseAuth.signOut();
   }
 

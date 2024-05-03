@@ -51,8 +51,6 @@ class AuthCubit extends Cubit<AuthState> {
     if (!validated) return;
 
     emit(const AuthState.loading());
-
-    /// First request to register user
     final response = await authService.registerUser(
       email: email,
       password: password,
@@ -60,14 +58,16 @@ class AuthCubit extends Cubit<AuthState> {
     );
     response.fold(
       onFailure,
-      (_) async {
-        /// Second request to login user and retrieve credentials
-        final data = await authService.loginUser(
-          email: email,
-          password: password,
-        );
-        data.fold(onFailure, (_) => emit(const AuthState.registered()));
-      },
+      (_) => emit(const AuthState.registered()),
+    );
+  }
+
+  Future<void> signWithGoogle() async {
+    emit(const AuthState.socialSignLoading());
+    final response = await authService.signWithGoogle();
+    response.fold(
+      onFailure,
+      (r) => emit(const AuthState.loggedIn()),
     );
   }
 
@@ -90,7 +90,6 @@ class AuthCubit extends Cubit<AuthState> {
   }
 
   Future<void> signOut() async {
-    biometricAuthenticated = false;
     emit(const AuthState.loading());
     await authService.signOut();
     emit(const AuthState.loggedOut());

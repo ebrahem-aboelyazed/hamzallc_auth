@@ -44,10 +44,11 @@ class _LoginViewState extends State<LoginView> {
                   const SizedBox(
                     height: Dimensions.paddingExtraLarge,
                   ),
-                  Align(
-                    child: BlocBuilder<AuthCubit, AuthState>(
-                      builder: (context, state) {
-                        return PrimaryButton(
+                  BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      return IgnorePointer(
+                        ignoring: state is AuthSocialSignLoading,
+                        child: PrimaryButton(
                           onPressed: () async {
                             await cubit.loginUser(
                               email: email,
@@ -56,9 +57,23 @@ class _LoginViewState extends State<LoginView> {
                           },
                           loading: state is AuthLoading,
                           text: 'LOGIN',
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: Dimensions.paddingMax),
+                  BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      return IgnorePointer(
+                        ignoring: state is AuthLoading,
+                        child: GoogleSignButton(
+                          onPressed: cubit.signWithGoogle,
+                          loading: state is AuthSocialSignLoading,
+                          text: 'SIGN IN WITH GOOGLE',
+                          loadingText: 'SIGNING IN WITH GOOGLE...',
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(height: Dimensions.paddingDefault),
                   Row(

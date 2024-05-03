@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hamzallc_auth/modules/auth/auth.dart';
@@ -11,20 +10,19 @@ class HomeLockedView extends StatefulWidget {
   State<HomeLockedView> createState() => _HomeLockedViewState();
 }
 
-class _HomeLockedViewState extends State<HomeLockedView>
-    with WidgetsBindingObserver {
+class _HomeLockedViewState extends State<HomeLockedView> {
   late final AuthCubit _authCubit;
 
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addObserver(this);
     _authCubit = context.read<AuthCubit>();
     _authCubit.authenticateWithBiometrics();
   }
 
   @override
   Widget build(BuildContext context) {
+    print('Built HomeLockedView');
     return Scaffold(
       body: SafeArea(
         child: SizedBox(
