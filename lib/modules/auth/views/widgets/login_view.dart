@@ -23,7 +23,7 @@ class _LoginViewState extends State<LoginView> {
     final cubit = context.read<AuthCubit>();
     return Column(
       children: [
-        const CustomHeader(text: 'LOGIN'),
+        const CustomHeader(text: 'LOGIN', showBack: false),
         const SizedBox(height: Dimensions.paddingDefault),
         Expanded(
           child: SingleChildScrollView(
