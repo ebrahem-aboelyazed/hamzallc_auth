@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:hamzallc_auth/core/core.dart';
 import 'package:hamzallc_auth/modules/auth/auth.dart';
@@ -24,12 +23,6 @@ class AuthCubit extends Cubit<AuthState> {
   /// Retrieves a stream of the current user.
   Stream<User?> get userStream => authService.userStream;
 
-  /// Global key for the login form.
-  final GlobalKey<FormState> loginFormKey = GlobalKey();
-
-  /// Global key for the sign-up form.
-  final GlobalKey<FormState> signUpFormKey = GlobalKey();
-
   /// Logs in a user with email and password.
   ///
   /// Parameters:
@@ -43,9 +36,6 @@ class AuthCubit extends Cubit<AuthState> {
     required String email,
     required String password,
   }) async {
-    final validated = loginFormKey.currentState?.validate() ?? false;
-    if (!validated) return;
-
     emit(const AuthState.loading());
     final response = await authService.loginUser(
       email: email,
@@ -72,9 +62,6 @@ class AuthCubit extends Cubit<AuthState> {
     required String password,
     required String name,
   }) async {
-    final validated = signUpFormKey.currentState?.validate() ?? false;
-    if (!validated) return;
-
     emit(const AuthState.loading());
     final response = await authService.registerUser(
       email: email,

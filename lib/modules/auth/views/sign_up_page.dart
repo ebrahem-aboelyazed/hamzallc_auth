@@ -13,18 +13,15 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
-        child: Form(
-          key: context.read<AuthCubit>().signUpFormKey,
-          child: BlocListener<AuthCubit, AuthState>(
-            listener: (context, state) {
-              state.whenOrNull(
-                failure: context.showErrorSnackBar,
-                registered: () => context.go(Routes.home),
-                loggedIn: () => context.go(Routes.home),
-              );
-            },
-            child: const SignUpView(),
-          ),
+        child: BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              failure: context.showErrorSnackBar,
+              registered: () => context.go(Routes.home),
+              loggedIn: () => context.go(Routes.home),
+            );
+          },
+          child: const SignUpView(),
         ),
       ),
     );

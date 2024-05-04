@@ -13,17 +13,14 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: SafeArea(
-        child: Form(
-          key: context.read<AuthCubit>().loginFormKey,
-          child: BlocListener<AuthCubit, AuthState>(
-            listener: (context, state) {
-              state.whenOrNull(
-                failure: context.showErrorSnackBar,
-                loggedIn: () => context.go(Routes.home),
-              );
-            },
-            child: const LoginView(),
-          ),
+        child: BlocListener<AuthCubit, AuthState>(
+          listener: (context, state) {
+            state.whenOrNull(
+              failure: context.showErrorSnackBar,
+              loggedIn: () => context.go(Routes.home),
+            );
+          },
+          child: const LoginView(),
         ),
       ),
     );

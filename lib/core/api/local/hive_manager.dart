@@ -12,6 +12,7 @@ class HiveManager {
   // Initializations Methods
 
   /// Sets up a secure encryption key for encrypting sensitive data.
+  /// To be used with AES encryption
   ///
   /// Returns:
   ///   A Future that resolves to a Uint8List containing the encryption key.
@@ -31,6 +32,7 @@ class HiveManager {
   }
 
   /// Initializes the credentials box for storing sensitive data.
+  /// Uses AES encryption for encrypting data before storing it
   ///
   /// Returns:
   ///   A Future that resolves to a Box<String>

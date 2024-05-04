@@ -76,17 +76,22 @@ class AuthServiceImpl implements AuthService {
 
   @override
   Future<Either<Failure, User>> signWithGoogle() async {
-    final googleUser = await _googleSignIn.signIn();
-    final googleAuth = await googleUser?.authentication;
-    if (googleAuth == null) return const Left(Failure());
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth.accessToken,
-      idToken: googleAuth.idToken,
-    );
-    final data = await _firebaseAuth.signInWithCredential(credential);
-    final user = data.user;
-    if (user == null) return const Left(Failure());
-    return Right(user);
+    try {
+      final googleUser = await _googleSignIn.signIn();
+      final googleAuth = await googleUser?.authentication;
+      if (googleAuth == null) return const Left(Failure());
+      final credential = GoogleAuthProvider.credential(
+        accessToken: googleAuth.accessToken,
+        idToken: googleAuth.idToken,
+      );
+      final data = await _firebaseAuth.signInWithCredential(credential);
+      final user = data.user;
+      if (user == null) return const Left(Failure());
+      return Right(user);
+    } catch (e) {
+      final message = e.toString();
+      return Left(Failure(message: message));
+    }
   }
 
   @override
@@ -116,8 +121,8 @@ class AuthServiceImpl implements AuthService {
   @override
   Future<bool> canAuthenticateWithBiometrics() async {
     final canAuthenticateWithBiometrics = await _localAuth.canCheckBiometrics;
-    final canAuthenticate =
-        canAuthenticateWithBiometrics || await _localAuth.isDeviceSupported();
+    final isDeviceSupported = await _localAuth.isDeviceSupported();
+    final canAuthenticate = canAuthenticateWithBiometrics || isDeviceSupported;
     return canAuthenticate;
   }
 
@@ -129,7 +134,9 @@ class AuthServiceImpl implements AuthService {
 
   @override
   Future<void> reloadUser() async {
-    await _firebaseAuth.currentUser?.reload();
+    try {
+      await _firebaseAuth.currentUser?.reload();
+    } catch (_) {}
   }
 
   @override
