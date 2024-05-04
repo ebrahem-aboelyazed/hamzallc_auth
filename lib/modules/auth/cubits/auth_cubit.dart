@@ -150,4 +150,11 @@ class AuthCubit extends Cubit<AuthState> {
   void onFailure(Failure failure) {
     emit(AuthFailure(failure));
   }
+
+  @override
+  void emit(AuthState state) {
+    if (!isClosed) {
+      super.emit(state);
+    }
+  }
 }

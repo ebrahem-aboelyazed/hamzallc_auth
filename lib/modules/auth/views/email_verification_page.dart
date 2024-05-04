@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hamzallc_auth/modules/auth/auth.dart';
 import 'package:hamzallc_auth/routes/routes.dart';
+import 'package:hamzallc_auth/utils/utils.dart';
 
 /// Widget for the email verification page.
 class EmailVerificationPage extends StatefulWidget {
@@ -48,9 +49,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
           centerTitle: true,
           actions: [
             IconButton(
-              onPressed: () async {
-                await authCubit.signOut();
-              },
+              onPressed: authCubit.signOut,
               icon: const Icon(Icons.logout),
               color: Colors.red,
             ),
@@ -133,7 +132,10 @@ class _EmailVerificationPageState extends State<EmailVerificationPage> {
 
   /// Resends the verification email.
   Future<void> resendEmail() async {
-    await authCubit.sendVerificationEmail();
+    await authCubit.sendVerificationEmail().then((_) {
+      const message = 'A new verification mail is sent to your email';
+      context.showInfoSnackBar(message);
+    });
     setState(() {
       _seconds = 60;
       _isResendDisabled = true;

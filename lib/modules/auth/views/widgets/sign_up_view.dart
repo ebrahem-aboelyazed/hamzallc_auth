@@ -15,9 +15,9 @@ class SignUpView extends StatefulWidget {
 }
 
 class _SignUpViewState extends State<SignUpView> {
-  String name = '';
-  String email = '';
-  String password = '';
+  String _name = '';
+  String _email = '';
+  String _password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +36,17 @@ class _SignUpViewState extends State<SignUpView> {
                 children: [
                   const SizedBox(height: Dimensions.paddingMax),
                   NameField(
-                    onChanged: (value) => name = value,
+                    onChanged: (value) => _name = value,
                     hint: 'Enter name',
                     label: 'Name',
                   ),
                   const SizedBox(height: Dimensions.paddingDefault),
                   EmailField(
-                    onChanged: (value) => email = value,
+                    onChanged: (value) => _email = value,
                   ),
                   const SizedBox(height: Dimensions.paddingDefault),
                   PasswordField(
-                    onChanged: (value) => password = value,
+                    onChanged: (value) => _password = value,
                   ),
                   const SizedBox(height: Dimensions.paddingExtraLarge),
                   BlocBuilder<AuthCubit, AuthState>(
@@ -56,9 +56,9 @@ class _SignUpViewState extends State<SignUpView> {
                         child: PrimaryButton(
                           onPressed: () async {
                             await cubit.registerUser(
-                              email: email,
-                              password: password,
-                              name: name,
+                              email: _email,
+                              password: _password,
+                              name: _name,
                             );
                           },
                           loading: state is AuthLoading,
@@ -93,9 +93,7 @@ class _SignUpViewState extends State<SignUpView> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {
-                          context.go(Routes.login);
-                        },
+                        onPressed: () => context.go(Routes.login),
                         child: const Text(
                           'Login',
                           style: TextStyle(

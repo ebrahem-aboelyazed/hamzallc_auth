@@ -17,18 +17,17 @@ class AppPages {
     initialLocation: initial,
     debugLogDiagnostics: true,
     redirect: (context, state) {
+      final path = state.fullPath;
       final auth = getIt.get<AuthService>();
       final user = auth.currentUser;
+
       final emailVerified = user?.emailVerified ?? false;
+      final canAuth = path != Paths.login && path != Paths.signUp;
+      final canVerify = path != Paths.emailVerification;
 
-      final needsAuth =
-          state.fullPath != Paths.login && state.fullPath != Paths.signUp;
-      final needsVerification =
-          user != null && state.fullPath != Paths.emailVerification;
-
-      if (user == null && needsAuth) {
+      if (user == null && canAuth) {
         return Paths.login;
-      } else if (needsVerification && !emailVerified) {
+      } else if (user != null && canVerify && !emailVerified) {
         return Paths.emailVerification;
       }
       return null;

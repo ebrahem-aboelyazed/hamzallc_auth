@@ -18,9 +18,7 @@ class SignUpPage extends StatelessWidget {
           child: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
               state.whenOrNull(
-                failure: (failure) {
-                  context.showErrorSnackBar(failure);
-                },
+                failure: context.showErrorSnackBar,
                 registered: () => context.go(Routes.home),
                 loggedIn: () => context.go(Routes.home),
               );

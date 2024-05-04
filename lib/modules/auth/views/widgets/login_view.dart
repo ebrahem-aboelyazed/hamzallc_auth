@@ -15,8 +15,8 @@ class LoginView extends StatefulWidget {
 }
 
 class _LoginViewState extends State<LoginView> {
-  String email = '';
-  String password = '';
+  String _email = '';
+  String _password = '';
 
   @override
   Widget build(BuildContext context) {
@@ -35,11 +35,11 @@ class _LoginViewState extends State<LoginView> {
                 children: [
                   const SizedBox(height: Dimensions.paddingMax),
                   EmailField(
-                    onChanged: (value) => email = value,
+                    onChanged: (value) => _email = value,
                   ),
                   const SizedBox(height: Dimensions.paddingDefault),
                   PasswordField(
-                    onChanged: (value) => password = value,
+                    onChanged: (value) => _password = value,
                   ),
                   const SizedBox(
                     height: Dimensions.paddingExtraLarge,
@@ -51,8 +51,8 @@ class _LoginViewState extends State<LoginView> {
                         child: PrimaryButton(
                           onPressed: () async {
                             await cubit.loginUser(
-                              email: email,
-                              password: password,
+                              email: _email,
+                              password: _password,
                             );
                           },
                           loading: state is AuthLoading,
