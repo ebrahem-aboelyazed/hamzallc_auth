@@ -60,7 +60,7 @@ The project also incorporates Auth 2.0 for seamless third-party authentication a
 ## Documentation
 
 1. **Code Documentation:**
-    - The project maintains comprehensive documentation for all classes and methods to ensure code
+    - The project maintains comprehensive documentation for classes and methods to ensure code
       readability, maintainability, and understanding.
     - Each class and method is extensively documented with detailed explanations of their
       functionalities, parameters, return types, and usage.
